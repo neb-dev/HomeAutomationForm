@@ -14,7 +14,7 @@
         <div class="row justify-content-center">
             
                 <form>
-                    <div class="form-row mb-2">
+                    <div class="form-row mb-3">
                         <div class="col">
                             <input type="text" class="form-control" id="first-name" placeholder="First name">
                         </div>
@@ -24,68 +24,65 @@
                         </div>
                     </div>
                     
-                    <div class="form-row">
+                    <div class="form-row mb-3">
                         <div class="col">
                             <input type="text" class="form-control" id="address" placeholder="Address">
                         </div>
                     </div>
                     
-
-                    <div class="form-group">
-                        <label>City</label>
-                        <input type="text" id="city">
+                    <div class="form-row mb-3">
+                        <div class="col">
+                            <input type="text" class="form-control" id="city" placeholder="City">
+                        </div>
+                        <div class="col">
+                            <select class="custom-select" id="state">
+                                <option selected>State</option>
+                                <option value="Idaho">Idaho</option>
+                                <option value="Iowa">Iowa</option>
+                                <option value="Nebraska">Nebraska</option>
+                            </select>
+                        </div>
+                        
                     </div>
 
-                    <div class="form-group">
-                        <label>State</label>
-                        <select class="custom-select" id="state">
-                            <option selected></option>
-                            <option value="Idaho">Idaho</option>
-                            <option value="Iowa">Iowa</option>
-                            <option value="Nebraska">Nebraska</option>
-                        </select>
+                    <div class="form-row mb-3">
+                        <div class="col">
+                            <input type="text" class="form-control" id="zip" placeholder="ZIP">
+                        </div>
+                        <div class="col">
+                            <input type="text" class="form-control" id="county" placeholder="County">
+                        </div>
                     </div>
 
-                    <div class="form-group">
-                        <label>ZIP</label>
-                        <input type="text" id="zip">
-                    </div>
-
-                    <div class="form-group">
-                        <label>County</label>
-                        <input type="text" id="county">
-                    </div>
-
-                    <div class="form-group">
-                        <label>Number of Residents</label>
-                        <select class="custom-select" id="drivers-residents">
-                            <option selected></option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Number of Vehicles</label>
-                        <select class="custom-select" id="vehicles">
-                            <option selected></option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
-                        </select>
+                    <div class="form-row mb-3">
+                        <div class="col">
+                            <select class="custom-select" id="drivers-residents">
+                                <option selected>Number of Residents</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                            </select>
+                        </div>
+                        <div class="col">
+                            <select class="custom-select" id="vehicles">
+                                <option selected>Number of Vehicles</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                            </select>
+                        </div>
                     </div>
                    
                     <button type="submit" class="btn btn-primary" id="submit">Submit</button>
