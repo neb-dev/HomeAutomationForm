@@ -1,30 +1,55 @@
 <?php
-    if($_SERVER["REQUEST_METHOD" == "POST"]) {
-        $host = "local";
+    if($_SERVER["REQUEST_METHOD"] == "POST") {
+        $host = "localhost";
         $db = "cms";
         $user = "cms_user";
         $pass = "userpass";
         $conn = mysqli_connect($host, $user, $pass, $db) or exit("Unable to connect: " . mysqli_connect_error());
 
-        $sql = "INSERT INTO quote VALUES (
+        $sql = "INSERT INTO encompass_quote (
+            first_name,
+            last_name,
+            dob,
+            email,
+            phone,
+            gender,
+            marital_status,
+            address,
+            city,
+            state,
+            zip,
+            county,
+            residents,
+            vehicles,
+            dop,
+            rented,
+            sump,
+            roof_year,
+            conditions
+        ) VALUES (
             '". $_POST['first_name'] ."',
             '". $_POST['last_name'] ."',
             '". $_POST['dob'] ."',
             '". $_POST['email'] ."',
-            '". $_POST[''] ."',
+            '". $_POST['phone'] ."',
+            '". $_POST['gender_options'] ."',
             '". $_POST['marital_status'] ."',
-            '". $_POST[''] ."',
-            '". $_POST[''] ."',
-            '". $_POST[''] ."',
-            '". $_POST[''] ."',
-            '". $_POST[''] ."',
-            '". $_POST[''] ."',
-            '". $_POST[''] ."',
-            '". $_POST[''] ."',
-            '". $_POST[''] ."'
+            '". $_POST['address'] ."',
+            '". $_POST['city'] ."',
+            '". $_POST['state'] ."',
+            '". $_POST['zip'] ."',
+            '". $_POST['county'] ."',
+            '". $_POST['residents'] ."',
+            '". $_POST['vehicles'] ."',
+            '". $_POST['purchase'] ."',
+            '". $_POST['rented_options'] ."',
+            '". $_POST['sump_pump'] ."',
+            '". $_POST['roof_year'] ."',
+            '". $_POST['conditions'] ."'
         )";
 
-        echo $sql;
+        var_dump($sql);
+        exit;
 
         $result = mysqli_query($conn, $sql);
         if(!$result) {
@@ -51,42 +76,48 @@
     <div class="container">
         <div class="row justify-content-center">
 
-            <form>
+            <form method="post">
                 <div class="form-row mb-3">
                     <div class="col">
-                        <input type="text" class="form-control" id="first_name" placeholder="First name">
+                        <input type="text" class="form-control" name="first_name" placeholder="First name">
                     </div>
 
                     <div class="col">
-                        <input type="text" class="form-control" id="last_name" placeholder="Last name">
+                        <input type="text" class="form-control" name="last_name" placeholder="Last name">
                     </div>
                 </div>
 
                 <div class="form-row mb-3">
                     <label for="dob" class="col-form-label">Date of Birth</label>
                     <div class="col">
-                        <input type="date" class="form-control" id="dob">
+                        <input type="date" class="form-control" name="dob" id="dob">
+                    </div>
+                </div>
+
+                <div class="form-row mb-3">
+                    <div class="col">
+                        <input type="email" class="form-control" name="email" id="email" placeholder="Email">
                     </div>
                     <div class="col">
-                        <input type="email" class="form-control" id="email" placeholder="Email">
+                        <input type="text" class="form-control" name="phone" id="phone" placeholder="phone number">
                     </div>
                 </div>
 
                 <div class="form-row mb-3">
                     <div class="col pt-2">
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="gender-options" id="male-option"
+                            <input class="form-check-input" type="radio" name="gender_options" id="male_option"
                                 value="Male">
-                            <label class="form-check-label" for="male-option">Male</label>
+                            <label class="form-check-label" for="male_option">Male</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="gender-options" id="female-option"
+                            <input class="form-check-input" type="radio" name="gender_options" id="female_option"
                                 value="Female">
-                            <label class="form-check-label" for="female-option">Female</label>
+                            <label class="form-check-label" for="female_option">Female</label>
                         </div>
                     </div>
                     <div class="col">
-                        <select class="custom-select" id="marital_status">
+                        <select class="custom-select" name="marital_status" id="marital_status">
                             <option selected>Marital Status</option>
                             <option value="Married">Married</option>
                             <option value="Single">Single</option>
@@ -97,16 +128,16 @@
 
                 <div class="form-row mb-3">
                     <div class="col">
-                        <input type="text" class="form-control" id="address" placeholder="Address">
+                        <input type="text" class="form-control" name="address" id="address" placeholder="Address">
                     </div>
                 </div>
 
                 <div class="form-row mb-3">
                     <div class="col">
-                        <input type="text" class="form-control" id="city" placeholder="City">
+                        <input type="text" class="form-control" name="city" id="city" placeholder="City">
                     </div>
                     <div class="col">
-                        <select class="custom-select" id="state">
+                        <select class="custom-select" name="state" id="state">
                             <option selected>State</option>
                             <option value="Idaho">Idaho</option>
                             <option value="Iowa">Iowa</option>
@@ -117,16 +148,16 @@
 
                 <div class="form-row mb-3">
                     <div class="col">
-                        <input type="text" class="form-control" id="zip" placeholder="ZIP">
+                        <input type="text" class="form-control" name="zip" id="zip" placeholder="ZIP">
                     </div>
                     <div class="col">
-                        <input type="text" class="form-control" id="county" placeholder="County">
+                        <input type="text" class="form-control" name="county" id="county" placeholder="County">
                     </div>
                 </div>
 
                 <div class="form-row mb-3">
                     <div class="col">
-                        <select class="custom-select" id="drivers-residents">
+                        <select class="custom-select" name="residents" id="residents">
                             <option selected>Number of Residents</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -140,7 +171,7 @@
                         </select>
                     </div>
                     <div class="col">
-                        <select class="custom-select" id="vehicles">
+                        <select class="custom-select" name="vehicles" id="vehicles">
                             <option selected>Number of Vehicles</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -158,7 +189,7 @@
                 <div class="form-row mb-3">
                     <label for="purchase" class="col-form-label">Purchase Date</label>
                     <div class="col">
-                        <input type="date" class="form-control" id="purchase">
+                        <input type="date" class="form-control" name="purchase" id="purchase">
                     </div>
                 </div>
 
@@ -166,21 +197,21 @@
                     <div class="col">
                         <label for="purchase" class="col-form-label">Is home rented out?</label>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="rented-options" id="rented-yes"
-                                value="Male">
-                            <label class="form-check-label" for="rented-yes">Yes</label>
+                            <input class="form-check-input" type="radio" name="rented_options" id="rented_yes"
+                                value="Yes">
+                            <label class="form-check-label" for="rented_yes">Yes</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="rented-options" id="rented-no"
-                                value="Female">
-                            <label class="form-check-label" for="rented-no">No</label>
+                            <input class="form-check-input" type="radio" name="rented_options" id="rented_no"
+                                value="No">
+                            <label class="form-check-label" for="rented_no">No</label>
                         </div>
                     </div>
                 </div>
 
                 <div class="form-row mb-3">
                     <div class="col">
-                        <select class="custom-select" id="sump-pump">
+                        <select class="custom-select" name="sump_pump" id="sump_pump">
                             <option selected># of Sump Pumps</option>
                             <option value="0">0</option>
                             <option value="1">1</option>
@@ -189,7 +220,7 @@
                         </select>
                     </div>
                     <div class="col">
-                        <input type="text" class="form-control" id="roof-year" placeholder="Roof Year">
+                        <input type="text" class="form-control" name="roof_year" id="roof_year" placeholder="Roof Year">
                     </div>
                 </div>
 
@@ -197,14 +228,14 @@
                     <div class="col">
                         <label for="conditions" class="col-form-label">Do any of the following conditions apply?</label>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="conditions" id="conditions-yes"
-                                value="Male">
-                            <label class="form-check-label" for="conditions-yes">Yes</label>
+                            <input class="form-check-input" type="radio" name="conditions" id="conditions_yes"
+                                value="Yes">
+                            <label class="form-check-label" for="conditions_yes">Yes</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="conditions" id="conditions-no"
-                                value="Female">
-                            <label class="form-check-label" for="conditions-no">No</label>
+                            <input class="form-check-input" type="radio" name="conditions" id="conditions_no"
+                                value="No">
+                            <label class="form-check-label" for="conditions_no">No</label>
                         </div>
                     </div>
                 </div>
